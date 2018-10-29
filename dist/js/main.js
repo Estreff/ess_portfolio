@@ -4,6 +4,9 @@ const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuBranding = document.querySelector('.menu-branding');
 const navItems = document.querySelectorAll('.nav-item');
+const pathname = window.location.pathname
+  .replace('/dist/', '')
+  .replace('.html', '');
 
 //Set Initial State of Menu
 let showMenu = false;
@@ -30,4 +33,33 @@ function toggleMenu() {
     //Set Menu State
     showMenu = false;
   }
+}
+
+projects = [
+  {
+    projectName: 'Golf Tourney Scorecard',
+    image: 'gts.png',
+    website: 'https://estreff.github.io/GTSv2',
+    github: 'https://github.com/Estreff/GTSv2'
+  }
+];
+
+if (pathname === 'work') {
+  projects.map(project => {
+    console.log('Project Name:', project.projectName);
+    let item = '';
+    item += `<div class="item" title="${project.projectName}">`;
+    item += `<a href="${
+      project.website
+    }" target="_blank"><img src="./img/gts.png" alt="Project 1"></a>`;
+    item += `<a href="${
+      project.website
+    }" target="_blank" class="btn-light"><i class="fas fa-eye"></i>Project</a>`;
+    item += `<a href="${
+      project.github
+    }" target="_blank" class="btn-dark"><i class="fab fa-github"></i>Github</a>`;
+    item += `</div>`;
+
+    $('.projects').append(item);
+  });
 }
