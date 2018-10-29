@@ -4,7 +4,9 @@ const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuBranding = document.querySelector('.menu-branding');
 const navItems = document.querySelectorAll('.nav-item');
-const pathname = window.location.pathname;
+const pathname = window.location.pathname
+  .split('/')
+  [window.location.pathname.split('/').length - 1].replace('.html', '');
 
 //Set Initial State of Menu
 let showMenu = false;
@@ -42,7 +44,7 @@ projects = [
   }
 ];
 
-if (pathname === '/work.html') {
+if (pathname === 'work') {
   projects.map(project => {
     console.log('Project Name:', project.projectName);
     let item = '';
