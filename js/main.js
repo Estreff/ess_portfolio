@@ -40,26 +40,45 @@ projects = [
     projectName: 'Golf Tourney Scorecard',
     image: 'gts.png',
     website: 'https://estreff.github.io/GTSv2',
-    github: 'https://github.com/Estreff/GTSv2'
+    github: 'https://github.com/Estreff/GTSv2',
+    show: true
+  },
+  {
+    projectName: 'Dev Connector',
+    image: 'devconnector.jpg',
+    website: 'https://dev-association.herokuapp.com',
+    github: 'https://github.com/Estreff/devconnector',
+    show: true
+  },
+  {
+    projectName: 'chariTABLE Host',
+    image: 'chariTABLE.jpg',
+    website: 'https://charitablehost.herokuapp.com',
+    github: 'https://github.com/Estreff/chariTABLE',
+    show: true
   }
 ];
 
 if (pathname === 'work') {
   projects.map(project => {
     console.log('Project Name:', project.projectName);
-    let item = '';
-    item += `<div class="item" title="${project.projectName}">`;
-    item += `<a href="${
-      project.website
-    }" target="_blank"><img src="./img/gts.png" alt="Project 1"></a>`;
-    item += `<a href="${
-      project.website
-    }" target="_blank" class="btn-light"><i class="fas fa-eye"></i>Project</a>`;
-    item += `<a href="${
-      project.github
-    }" target="_blank" class="btn-dark"><i class="fab fa-github"></i>Github</a>`;
-    item += `</div>`;
+    if (project.show === true) {
+      let item = '';
+      item += `<div class="item" title="${project.projectName}">`;
+      item += `<a href="${project.website}" target="_blank"><img src="./img/${
+        project.image
+      }" alt="Project 1" height="150"></a>`;
+      item += `<a href="${
+        project.website
+      }" target="_blank" class="btn-light"><i class="fas fa-eye"></i> ${
+        project.projectName
+      }</a>`;
+      item += `<a href="${
+        project.github
+      }" target="_blank" class="btn-dark"><i class="fab fa-github"></i> Github</a>`;
+      item += `</div>`;
 
-    $('.projects').append(item);
+      $('.projects').append(item);
+    }
   });
 }
